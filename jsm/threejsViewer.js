@@ -102,11 +102,13 @@ class threejsViewer {
                 let geometry = new THREE.BoxGeometry(dims)
                 geometry.translate(dims[0] / 2, dims[1] / 2, dims[2] / 2)
 
-                let shader = VolumeRenderShader1
-
-                let texture = new THREE.DataTexture3D(volume.alpha, dims[0], dims[1], dims[2])
+                const shader = VolumeRenderShader1
                 
 
+                let texture = new THREE.DataTexture3D(volume.alpha, dims[0], dims[1], dims[2])
+                texture.format = THREE.RedFormat;
+                texture.type = THREE.UnsignedByteType;
+                texture.minFilter = texture.magFilter = THREE.LinearFilter;
 
                 let cmtexture = new THREE.DataTexture(colormap, 256, 1)
 

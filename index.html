@@ -355,7 +355,10 @@
 
             //當調色盤的參數變更時，觸發事件
             controlView.addEventListener('change', () => {
-                modelView.renderVolume(field.alpha, getColormap(), arg)
+                if (field == null){
+                    return;
+                }
+                modelView.renderVolume(field, getColormap(), arg)
             })
 
             init()
